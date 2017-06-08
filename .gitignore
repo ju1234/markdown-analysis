@@ -10,5 +10,6 @@ src/routes/index.dev.js
 .idea
 test.js
 index.html
+./index.js
 app.js
 webpack.config.js
