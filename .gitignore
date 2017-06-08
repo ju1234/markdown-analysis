@@ -1,0 +1,14 @@
+/node_modules/
+dist/
+npm-debug.log
+.DS_Store
+.vscode
+yarn.lock
+/.idea/
+.happypack
+src/routes/index.dev.js
+.idea
+test.js
+index.html
+app.js
+webpack.config.js
