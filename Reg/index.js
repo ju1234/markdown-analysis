@@ -100,6 +100,9 @@ const _link = /(?=\n|^)\[(.*)\]\((.+)\)(?=\n|$)/gi;
 const _code = /(?=^|\n)`{3}(.*)\n(.+)\n`{3}(?=\n|$)/g;
 
 
+const _empty = /^\s*$/;
+
+
 export default {
   _h1,
   _h2,
@@ -116,5 +119,6 @@ export default {
   _mark,
   _img,
   _link,
-  _code
+  _code,
+  _empty
 }
