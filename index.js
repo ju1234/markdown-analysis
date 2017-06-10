@@ -26,7 +26,9 @@ function toHTML(value) {
       .replace(Reg._h3, '\n<h3>$1</h3>\n')
       .replace(Reg._h4, '\n<h4>$1</h4>\n')
       .replace(Reg._h5, '\n<h5>$1</h5>\n')
-      .replace(Reg._h6, '\n<h6>$1</h6>\n');
+      .replace(Reg._h6, '\n<h6>$1</h6>\n')
+      .replace(Reg._hr, '\n<hr/>\n')
+      .replace(Reg._italic, '<i>$1</i>');
 
 
   return value;
