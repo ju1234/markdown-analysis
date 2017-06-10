@@ -49,7 +49,9 @@ const _ol = /(?=^|\n)((?:\d+\.\s).+(?:(?=\n)(?:(?=\s|\t)*(?:\d+\.\s).+)*)*)(?=\n
 
 
 /**
- * 匹配斜体 *。。。 *
+ * 匹配斜体 *... *
+ *
+ * 转换时粗体优先，否则会又诡异的事情发生，发生什么我不说
  *
  * @type {RegExp}
  * @private
@@ -58,13 +60,21 @@ const _italic = /\*(.+)\*/gi;
 
 
 /**
- * 匹配粗体 **。。。 **
+ * 匹配粗体 **...**
  *
  * @type {RegExp}
  * @private
  */
 const _bold = /\*\*(.+)\*\*/gi;
 
+/**
+ * 匹配标记 `...`
+ *
+ * @type {RegExp}
+ * @private
+ */
+
+const _mark = /`(.+)`/gi;
 
 
 export default {
@@ -79,5 +89,6 @@ export default {
   _ul,
   _ol,
   _italic,
-  _bold
+  _bold,
+  _mark
 }
