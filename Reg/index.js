@@ -119,7 +119,7 @@ const _empty = /^\s*$/;
  * @type {RegExp}
  * @private
  */
-const _script = /<(script).*>.*<\/\1\s*>/gi;
+const _script = /<(script).*\/*>(.*<\/\1\s*>)?/gi;
 
 
 export default {
