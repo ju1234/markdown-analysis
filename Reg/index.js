@@ -1,5 +1,9 @@
 /**
  * Created by jufei on 2017/6/8.
+ *
+ * creator: ju1234
+ * describe: RegExc to make string convert to HTML
+ *
  */
 
 
