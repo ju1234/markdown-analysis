@@ -99,7 +99,12 @@ const _link = /(?=\n|^)\[(.*)\]\((.+)\)(?=\n|$)/gi;
  */
 const _code = /(?=^|\n)`{3}(.*)\n(.+)\n`{3}(?=\n|$)/g;
 
-
+/**
+ * 匹配空字符串
+ *
+ * @type {RegExp}
+ * @private
+ */
 const _empty = /^\s*$/;
 
 
