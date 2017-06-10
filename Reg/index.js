@@ -91,6 +91,14 @@ const _img = /(?=\n|^)!\[(.*)\]\((.+)\)(?=\n|$)/gi;
  */
 const _link = /(?=\n|^)\[(.*)\]\((.+)\)(?=\n|$)/gi;
 
+/**
+ * 匹配代码框    ```(type) code ```
+ *
+ * @type {RegExp}
+ * @private
+ */
+const _code = /(?=^|\n)`{3}(.*)\n(.+)\n`{3}(?=\n|$)/g;
+
 
 export default {
   _h1,
@@ -107,5 +115,6 @@ export default {
   _bold,
   _mark,
   _img,
-  _link
+  _link,
+  _code
 }
