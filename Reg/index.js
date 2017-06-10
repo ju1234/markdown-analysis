@@ -48,6 +48,25 @@ const _ul = /(?=^|\n)((?:\*|\-|\+).+(?:(?=\n)(?:(?=\s|\t)*(?:\*|\-|\+).+)*)*)(?=
 const _ol = /(?=^|\n)((?:\d+\.\s).+(?:(?=\n)(?:(?=\s|\t)*(?:\d+\.\s).+)*)*)(?=\n|$)/gi;
 
 
+/**
+ * 匹配斜体 *。。。 *
+ *
+ * @type {RegExp}
+ * @private
+ */
+const _italic = /\*(.+)\*/gi;
+
+
+/**
+ * 匹配粗体 **。。。 **
+ *
+ * @type {RegExp}
+ * @private
+ */
+const _bold = /\*\*(.+)\*\*/gi;
+
+
+
 export default {
   _h1,
   _h2,
@@ -58,5 +77,7 @@ export default {
   _quote,
   _hr,
   _ul,
-  _ol
+  _ol,
+  _italic,
+  _bold
 }
