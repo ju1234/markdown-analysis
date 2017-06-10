@@ -83,6 +83,14 @@ const _mark = /`(.+)`/gi;
  */
 const _img = /(?=\n|^)!\[(.*)\]\((.+)\)(?=\n|$)/gi;
 
+/**
+ * 匹配链接   [alias](url)
+ *
+ * @type {RegExp}
+ * @private
+ */
+const _link = /(?=\n|^)\[(.*)\]\((.+)\)(?=\n|$)/gi;
+
 
 export default {
   _h1,
@@ -98,5 +106,6 @@ export default {
   _italic,
   _bold,
   _mark,
-  _img
+  _img,
+  _link
 }
