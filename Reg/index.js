@@ -113,6 +113,14 @@ const _code = /(?:^|\n)`{3}(.*)\n(.+)\n`{3}(?=\n|$)/g;
  */
 const _empty = /^\s*$/;
 
+/**
+ * 匹配script标签
+ *
+ * @type {RegExp}
+ * @private
+ */
+const _script = /<(script).*>.*<\/\1\s*>/gi;
+
 
 export default {
   _h1,
@@ -131,5 +139,6 @@ export default {
   _img,
   _link,
   _code,
-  _empty
+  _empty,
+  _script
 }
