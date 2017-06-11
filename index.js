@@ -46,17 +46,23 @@ function toHTML(value) {
       .replace(Reg._bold, '<b>$1</b>')
       // 斜体
       .replace(Reg._italic, '<i>$1</i>')
-      // 标记
-      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>')
       // 引用
       .replace(Reg._quote, '<p class="ju-markdown-quote">$1</p>')
       // 图片
       .replace(Reg._img, function ($, $1, $2) {
         return `<img src="${$2}" title="${$1}" alt="${$1}"/>`
       })
+      // 链接
       .replace(Reg._link, function ($, $1, $2) {
         return `<a href="${$2}" class="ju-markdown-link">${$1}</a>`
-      });
+      })
+      // 代码框
+      .replace(Reg._code,function ($,$1,$2) {
+        console.log($1,$2)
+        return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`
+      })
+      // 标记
+      .replace(Reg._mark, '<span class="ju-markdown-mark">$2</span>');
 
   return value;
 }
