@@ -47,7 +47,8 @@ function toHTML(value) {
       // 斜体
       .replace(Reg._italic, '<i>$1</i>')
       // 标记
-      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>');
+      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>')
+      .replace(Reg._quote,'<p class="ju-markdown-quote">$1</p>');
 
   return value;
 }
