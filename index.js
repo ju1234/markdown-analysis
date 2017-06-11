@@ -6,6 +6,7 @@
 
 
 import Reg from './Reg';
+import './style/index.css';
 
 
 function toHTML(value) {
@@ -35,13 +36,13 @@ function toHTML(value) {
       // 转换h6标签
       .replace(Reg._h6, '\n<h6>$1</h6>\n')
       // 转换分割线为hr标签
-      .replace(Reg._hr, '\n<hr style="border-style: dashed"/>\n')
+      .replace(Reg._hr, '\n<hr class="ju-markdown-hr"/>\n')
       // 粗体
       .replace(Reg._bold,'<b>$1</b>')
       // 斜体
       .replace(Reg._italic, '<i>$1</i>')
       // 标记
-      .replace(Reg._mark,'<span style="background: #F9F2F4;color:#D25171;g">$1</span>');
+      .replace(Reg._mark,'<span class="ju-markdown-mark">$1</span>');
 
   console.log(value);
 
