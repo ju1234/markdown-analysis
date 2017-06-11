@@ -45,15 +45,20 @@ function toHTML(value) {
       .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>');
   // 无序列表
 
+
   value = Reg._ul.test(value) ? toUl(value) : value;
   value = Reg._ol.test(value) ? toOl(value) : value;
 
-  console.log(value)
+
+  // console.log(value)
 
   // console.log(value);
 
   return value;
 }
+
+
+
 
 function toUl(value) {
 
@@ -62,31 +67,38 @@ function toUl(value) {
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
-    return '<ul>' + result.replace(/\n\* /g,'').replace(/ \*/g,'*') + '</ul>'
+    return '\n<ul>' + result.replace(/\n[\-+*] /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ul>'
   });
-
+  console.log(value)
   value =  Reg._ul.test(value) ? toUl(value) : value;
+  value =  Reg._ol.test(value) ? toOl(value) : value;
   // value = value.split(/\n\* |\n(?=<\/ul>)/)
   //     .replace(Reg._li,'<li>$1</li>')
 
 
-  value =  value.replace(/<li>\s*<\/li>/g,'')
+  value =  value.replace(/<li>\s*<\/li>/g,'');
 
   return value;
 }
 
 
 function toOl(value) {
-
-  value = value.replace(Reg._ul,function ($1) {
+  console.log('convert ol')
+  value = value.replace(Reg._ol,function ($1) {
+    console.log($1,'$1')
     let result = '';
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
-    return '<ol>' + result.replace(/\n\* /g,'').replace(/ \*/g,'*') + '</ol>'
+    console.log($1,'want')
+    return '\n<ol>' + result.replace(/\n\d\. /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ol>'
   });
 
-  value =  Reg._ul.test(value) ? toOl(value) : value;
+  console.log(value);
+  value = value.replace(/ ([\-+*])/g,'$1');
+  console.log(/ [\-+*]/.test(value),'asfasgfjasoghjadis')
+  value =  Reg._ol.test(value) ? toOl(value) : value;
+  value =  Reg._ul.test(value) ? toUl(value) : value;
   // value = value.split(/\n\* |\n(?=<\/ul>)/)
   //     .replace(Reg._li,'<li>$1</li>')
 
