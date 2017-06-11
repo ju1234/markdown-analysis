@@ -20,6 +20,11 @@ function toHTML(value) {
     throw 'argument[0] is empty'
   }
 
+  // 无序列表
+  value = Reg._ul.test(value) ? toUl(value) : value;
+  // 有序列表
+  value = Reg._ol.test(value) ? toOl(value) : value;
+
   value = value
   // 删除script标签，加强网页安全性
       .replace(Reg._script, '')
@@ -43,16 +48,6 @@ function toHTML(value) {
       .replace(Reg._italic, '<i>$1</i>')
       // 标记
       .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>');
-  // 无序列表
-
-
-  value = Reg._ul.test(value) ? toUl(value) : value;
-  value = Reg._ol.test(value) ? toOl(value) : value;
-
-
-  // console.log(value)
-
-  // console.log(value);
 
   return value;
 }
@@ -62,20 +57,21 @@ function toHTML(value) {
 
 function toUl(value) {
 
+  // 找出满足无序列表条件的字符串
   value = value.replace(Reg._ul,function ($1) {
     let result = '';
+    // 根据换行符之后没有空格切割字符串 因为二级列表之前必定有空格
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
+    // 去除下级列表标志前的空格
     return '\n<ul>' + result.replace(/\n[\-+*] /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ul>'
   });
-  console.log(value)
+
   value =  Reg._ul.test(value) ? toUl(value) : value;
   value =  Reg._ol.test(value) ? toOl(value) : value;
-  // value = value.split(/\n\* |\n(?=<\/ul>)/)
-  //     .replace(Reg._li,'<li>$1</li>')
 
-
+  // 去除空的li标签
   value =  value.replace(/<li>\s*<\/li>/g,'');
 
   return value;
@@ -83,25 +79,19 @@ function toUl(value) {
 
 
 function toOl(value) {
-  console.log('convert ol')
+
   value = value.replace(Reg._ol,function ($1) {
-    console.log($1,'$1')
     let result = '';
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
-    console.log($1,'want')
     return '\n<ol>' + result.replace(/\n\d\. /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ol>'
   });
 
-  console.log(value);
   value = value.replace(/ ([\-+*])/g,'$1');
-  console.log(/ [\-+*]/.test(value),'asfasgfjasoghjadis')
+
   value =  Reg._ol.test(value) ? toOl(value) : value;
   value =  Reg._ul.test(value) ? toUl(value) : value;
-  // value = value.split(/\n\* |\n(?=<\/ul>)/)
-  //     .replace(Reg._li,'<li>$1</li>')
-
 
   value =  value.replace(/<li>\s*<\/li>/g,'')
 
