@@ -89,7 +89,7 @@ const _mark = /`(.+)`/gi;
  * @type {RegExp}
  * @private
  */
-const _img = /(?:\n|^)!\[(.*)\]\((.+)\)(?=\n|$)/gi;
+const _img = /!\[(.*)\]\((.+)\)/gi;
 
 /**
  * 匹配链接   [alias](url)

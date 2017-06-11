@@ -48,32 +48,38 @@ function toHTML(value) {
       .replace(Reg._italic, '<i>$1</i>')
       // 标记
       .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>')
-      .replace(Reg._quote,'<p class="ju-markdown-quote">$1</p>');
+      // 引用
+      .replace(Reg._quote, '<p class="ju-markdown-quote">$1</p>')
+      // 图片
+      .replace(Reg._img, function ($, $1, $2) {
+        return `<img src="${$2}" title="${$1}" alt="${$1}"/>`
+      })
+      .replace(Reg._link, function ($, $1, $2) {
+        return `<a href="${$2}" class="ju-markdown-link">${$1}</a>`
+      });
 
   return value;
 }
 
 
-
-
 function toUl(value) {
 
   // 找出满足无序列表条件的字符串
-  value = value.replace(Reg._ul,function ($1) {
+  value = value.replace(Reg._ul, function ($1) {
     let result = '';
     // 根据换行符之后没有空格切割字符串 因为二级列表之前必定有空格
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
     // 去除下级列表标志前的空格
-    return '\n<ul>' + result.replace(/\n[\-+*] /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ul>'
+    return '\n<ul>' + result.replace(/\n[\-+*] /g, '').replace(/ ([\-+*])| (\d\.)/g, '$1$2') + '</ul>'
   });
 
-  value =  Reg._ul.test(value) ? toUl(value) : value;
-  value =  Reg._ol.test(value) ? toOl(value) : value;
+  value = Reg._ul.test(value) ? toUl(value) : value;
+  value = Reg._ol.test(value) ? toOl(value) : value;
 
   // 去除空的li标签
-  value =  value.replace(/<li>\s*<\/li>/g,'');
+  value = value.replace(/<li>\s*<\/li>/g, '');
 
   return value;
 }
@@ -81,20 +87,20 @@ function toUl(value) {
 
 function toOl(value) {
 
-  value = value.replace(Reg._ol,function ($1) {
+  value = value.replace(Reg._ol, function ($1) {
     let result = '';
     $1.split(/\n(?! )/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
-    return '\n<ol>' + result.replace(/\n\d\. /g,'').replace(/ ([\-+*])| (\d\.)/g,'$1$2') + '</ol>'
+    return '\n<ol>' + result.replace(/\n\d\. /g, '').replace(/ ([\-+*])| (\d\.)/g, '$1$2') + '</ol>'
   });
 
-  value = value.replace(/ ([\-+*])/g,'$1');
+  value = value.replace(/ ([\-+*])/g, '$1');
 
-  value =  Reg._ol.test(value) ? toOl(value) : value;
-  value =  Reg._ul.test(value) ? toUl(value) : value;
+  value = Reg._ol.test(value) ? toOl(value) : value;
+  value = Reg._ul.test(value) ? toUl(value) : value;
 
-  value =  value.replace(/<li>\s*<\/li>/g,'')
+  value = value.replace(/<li>\s*<\/li>/g, '')
 
   return value;
 }
