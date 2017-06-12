@@ -29,9 +29,10 @@ function toHTML(value) {
   // 删除script标签，加强网页安全性
       .replace(Reg._script, '')
       // 代码框
-      .replace(Reg._code,function ($,$1,$2) {
-        console.log($1,$2)
-        return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`.replace('#','__code#__').replace('`','__code__Mark__')
+      .replace(Reg._code, function ($, $1, $2) {
+        return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`
+            .replace('#', '__code#__')
+            .replace('`', '__code__Mark__')
       })
       // 转换h1标签
       .replace(Reg._h1, '\n<h1 class="ju-markdown-h1">$1</h1>\n')
@@ -64,9 +65,9 @@ function toHTML(value) {
       // 标记
       .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>')
       // 将代码框中的#转回来
-      .replace('__code#__','#')
+      .replace('__code#__', '#')
       // 将`转回来
-      .replace('__code__Mark__','`');
+      .replace('__code__Mark__', '`');
 
   return value;
 }
