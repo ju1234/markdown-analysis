@@ -62,7 +62,7 @@ function toHTML(value) {
         return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`
       })
       // 标记
-      .replace(Reg._mark, '<span class="ju-markdown-mark">$2</span>');
+      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>');
 
   return value;
 }
