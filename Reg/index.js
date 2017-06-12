@@ -81,7 +81,7 @@ const _bold = /\*\*(.+)\*\*/gi;
  * @type {RegExp}
  * @private
  */
-const _mark = /`(.+)`/gi;
+const _mark = /`(.+?)`/gi;
 
 /**
  * 匹配图片  ![title](url)
