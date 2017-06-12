@@ -28,6 +28,11 @@ function toHTML(value) {
   value = value
   // 删除script标签，加强网页安全性
       .replace(Reg._script, '')
+      // 代码框
+      .replace(Reg._code,function ($,$1,$2) {
+        console.log($1,$2)
+        return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`.replace('#','__code#__').replace('`','__code__Mark__')
+      })
       // 转换h1标签
       .replace(Reg._h1, '\n<h1 class="ju-markdown-h1">$1</h1>\n')
       // 转换h2标签
@@ -56,13 +61,12 @@ function toHTML(value) {
       .replace(Reg._link, function ($, $1, $2) {
         return `<a href="${$2}" class="ju-markdown-link">${$1}</a>`
       })
-      // 代码框
-      .replace(Reg._code,function ($,$1,$2) {
-        console.log($1,$2)
-        return `<pre ref="${$1}" class="ju-markdown-code">${$2}</pre>`
-      })
       // 标记
-      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>');
+      .replace(Reg._mark, '<span class="ju-markdown-mark">$1</span>')
+      // 将代码框中的#转回来
+      .replace('__code#__','#')
+      // 将`转回来
+      .replace('__code__Mark__','`');
 
   return value;
 }
@@ -74,11 +78,11 @@ function toUl(value) {
   value = value.replace(Reg._ul, function ($1) {
     let result = '';
     // 根据换行符之后没有空格切割字符串 因为二级列表之前必定有空格
-    $1.split(/\n(?! )/g).map(item => {
+    $1.split(/\n(?!\s)/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
     // 去除下级列表标志前的空格
-    return '\n<ul>' + result.replace(/\n[\-+*] /g, '').replace(/ ([\-+*])| (\d\.)/g, '$1$2') + '</ul>'
+    return '\n<ul>' + result.replace(/\n[\-+*]\s/g, '').replace(/\s([\-+*])|\s(\d\.)/g, '$1$2') + '</ul>'
   });
 
   value = Reg._ul.test(value) ? toUl(value) : value;
@@ -95,10 +99,10 @@ function toOl(value) {
 
   value = value.replace(Reg._ol, function ($1) {
     let result = '';
-    $1.split(/\n(?! )/g).map(item => {
+    $1.split(/\n(?!\s)/g).map(item => {
       result += `<li>\n${item}\n</li>`
     });
-    return '\n<ol>' + result.replace(/\n\d\. /g, '').replace(/ ([\-+*])| (\d\.)/g, '$1$2') + '</ol>'
+    return '\n<ol>' + result.replace(/\n\d\.\s/g, '').replace(/\s([\-+*])|\s(\d\.)/g, '$1$2') + '</ol>'
   });
 
   value = value.replace(/ ([\-+*])/g, '$1');
