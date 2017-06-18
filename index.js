@@ -22,6 +22,8 @@ export default function toHTML(value) {
   while (index < valueLength) {
     chunk = chunks[index];
     switch (getBlockType(chunk)){
+      case 'empty':
+        break;
       case '_isTitle':
         result += format.title(chunk);
         break;
@@ -30,16 +32,18 @@ export default function toHTML(value) {
         break;
       case '_isCode':
       case '_isHr':
+        result += '<hr/>';
+        break;
       case '_isList':
       case 'noBlockType':
       default:
-        result += chunk;
+        result += format.image(chunk);
         break;
     }
     index++;
   }
 
-  console.log(result)
+  console.log(result);
   return result;
 }
 

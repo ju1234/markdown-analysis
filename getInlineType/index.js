@@ -8,7 +8,7 @@ import {inlineTypeReg} from '../commonReg';
 /**
  * get inline type
  * @param value
- * @return {*}
+ * @return {*} 【hasImages,hasLink,hasBold,hasItalic,hasMark,noInlineType】
  */
 function getInlineType(value) {
   for(let i in inlineTypeReg){

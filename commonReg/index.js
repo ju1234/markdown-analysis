@@ -57,7 +57,7 @@ const _isCode = /^`{3}/;
  * @type {RegExp}
  * @private
  */
-const _isHr = /^\s*([*\-]\s*){3,}/;
+const _isHr = /^([*\-]\s*){3,}/;
 
 /**
  * list
