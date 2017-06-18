@@ -1,150 +1,75 @@
 /**
- * Created by jufei on 2017/6/8.
- *
- * creator: ju1234
- * describe: RegExc to make string convert to HTML
- *
+ * Created by jufei on 2017/6/18.
  */
 
-
 /**
- * 匹配标题1，2，3，4，5，6 #
+ * h1 - h6
  * @type {RegExp}
  */
-const _h1 = /(?:^|\n)#\s(.+)(?=\n?|$)/gi;
-
-const _h2 = /(?:^|\n)#{2}\s(.+)(?=\n|$)/gi;
-
-const _h3 = /(?:^|\n)#{3}\s(.+)(?=\n|$)/gi;
-
-const _h4 = /(?:^|\n)#{4}\s(.+)(?=\n|$)/gi;
-
-const _h5 = /(?:^|\n)#{5}\s(.+)(?=\n|$)/gi;
-
-const _h6 = /(?:^|\n)#{6}\s(.+)(?=\n|$)/gi;
+const _isTitle = /^#{1,6}\s+/g;
 
 
 /**
- * 匹配引用 >
- *
+ * 引用
  * @type {RegExp}
  */
-const _quote = /(?:^|\n)>\s(.+)(?=\n|$)/gi;
+const _isQuote = /^>\s+/g;
 
 /**
- * 匹配分割线 ***
- *
- * @type {RegExp}
- */
-const _hr = /(?:^|\n)(\*{3})(?=\n|$)/gi;
-
-/**
- * 匹配无序列表 + * -
- *
- * @type {RegExp}
- */
-const _ul = /(?:^|\n)((?:\*|\-|\+)\s.+(?:(?:\n)(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
-// const _ul = /(?:^|\n)[-*+] .+(?:\n{1,2}|$)/gi;
-
-/**
- * 匹配有序列表 1. 2. 3.
- *
+ * image
  * @type {RegExp}
  * @private
  */
-// const _ol = /(?:^|\n)(\d+\.\s.+(?:(?:\n)(?:(?:\s|\t)*\d+\.\s.+)*)*)(?=\n|$)/gi;
-const _ol = /(?:^|\n)((?:\d\.)\s.+(?:(?:\n)(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
+const _isImg = /!\[.*\](\(.+\)|\[.+\])/g;
 
 
 /**
- * 匹配斜体 *... *
- *
- * 转换时粗体优先，否则会又诡异的事情发生，发生什么我不说
- *
+ * link
  * @type {RegExp}
  * @private
  */
-const _italic = /\*(.+)\*/gi;
+const _isLink = /\[.*\](\(.+\)|\[.+\])/g;
 
 
 /**
- * 匹配粗体 **...**
- *
+ * bold
  * @type {RegExp}
- * @private
  */
-const _bold = /\*\*(.+)\*\*/gi;
+const _isBold = /(\*\*).+\1/g;
+
 
 /**
- * 匹配标记 `...`
- *
+ * italic
  * @type {RegExp}
- * @private
  */
-const _mark = /`(.+?)`/gi;
+const _isItalic = /\*.+\*/g;
 
 /**
- * 匹配图片  ![title](url)
- *
+ * code
  * @type {RegExp}
  * @private
  */
-const _img = /!\[(.*)\]\((.+)\)/gi;
+const _isCode = /^`{3}$/;
+
 
 /**
- * 匹配链接   [alias](url)
- *
+ * hr
  * @type {RegExp}
  * @private
  */
-const _link = /(?:\n|^)\[(.*)\]\((.+)\)(?=\n|$)/gi;
+const _isHr = /^([*\-]\s){3,}/;
 
 /**
- * 匹配代码框    ```(type) code ```
- *
+ * list
  * @type {RegExp}
  * @private
  */
-const _code = /(?:^|\n)`{3}(.*)\n((?:.+\n+)*?)`{3}(?=\n|$)/g;
+const _isList = /^([\-*+]|\d\.)\s/;
+
 
 /**
- * 匹配空字符串
- *
+ * mark
  * @type {RegExp}
  * @private
  */
-const _empty = /^\s*$/;
-
-/**
- * 匹配script标签
- *
- * @type {RegExp}
- * @private
- */
-const _script = /<(script).*\/*>(.*<\/\1\s*>)?/gi;
-
-
-const _li = /(?:\n)\* (.+\n( \* .+(\n?))*)/gi;
-
-
-export default {
-  _h1,
-  _h2,
-  _h3,
-  _h4,
-  _h5,
-  _h6,
-  _quote,
-  _hr,
-  _ul,
-  _ol,
-  _italic,
-  _bold,
-  _mark,
-  _img,
-  _link,
-  _code,
-  _empty,
-  _script,
-  _li
-}
+const _isMark = /`.+`/g;
