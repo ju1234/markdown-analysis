@@ -22,17 +22,21 @@ export default function toHTML(value) {
   while (index < valueLength) {
     chunk = chunks[index];
     switch (getBlockType(chunk)){
+      // 空行
       case 'empty':
         index++;
         break;
+      // 标题
       case '_isTitle':
         result += format.title(chunk);
         index++;
         break;
+      // 引用
       case '_isQuote':
         result += format.quote(chunk);
         index++;
         break;
+      // 代码
       case '_isCode':
         let codeChunks = [chunk];
         while (!/^```\s*$/.test(chunks[index+1]) && index < valueLength - 1){
@@ -42,11 +46,14 @@ export default function toHTML(value) {
         result += format.code(codeChunks);
         index++;
         break;
+      // 分割线
       case '_isHr':
         result += '<hr/>';
         index++;
         break;
+      // 列表
       case '_isList':
+      // 无特殊字符
       case 'noBlockType':
       default:
         // result += format.image(chunk);
