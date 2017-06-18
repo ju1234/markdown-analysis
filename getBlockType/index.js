@@ -3,7 +3,7 @@
  */
 
 
-import {blockTypeReg} from '../Reg';
+import {blockTypeReg} from '../commonReg';
 
 
 /**

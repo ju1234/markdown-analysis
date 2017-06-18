@@ -6,7 +6,7 @@
  * h1 - h6
  * @type {RegExp}
  */
-const _isTitle = /^#{1,6}\s+/g;
+const _isTitle = /^#{1,6}\s+/;
 
 
 /**

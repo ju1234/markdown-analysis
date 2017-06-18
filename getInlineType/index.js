@@ -3,7 +3,7 @@
  */
 
 
-import {inlineTypeReg} from '../Reg';
+import {inlineTypeReg} from '../commonReg';
 
 /**
  * get inline type
