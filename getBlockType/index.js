@@ -7,15 +7,16 @@ import {blockTypeReg} from '../Reg';
 
 
 /**
- * get value type
+ * get value block type
  * @param value
- * @return {string} [_isTitle,_isQuote,_isCode,_isHr,_isList,_isNormal]
+ * @return {string} [_isTitle,_isQuote,_isCode,_isHr,_isList,noBlockType]
  */
+
 function getBlockType(value) {
   for(let i in blockTypeReg){
     if(blockTypeReg[i].test(value)) return i;
   }
-  return '_isNormal';
+  return 'noBlockType';
 }
 
 
