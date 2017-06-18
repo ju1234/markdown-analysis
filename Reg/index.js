@@ -20,7 +20,7 @@ const _isQuote = /^>\s+/g;
  * @type {RegExp}
  * @private
  */
-const _isImg = /!\[.*\](\(.+\)|\[.+\])/g;
+const _hasImg = /!\[.*\](\(.+\)|\[.+\])/g;
 
 
 /**
@@ -28,28 +28,28 @@ const _isImg = /!\[.*\](\(.+\)|\[.+\])/g;
  * @type {RegExp}
  * @private
  */
-const _isLink = /\[.*\](\(.+\)|\[.+\])/g;
+const _hasLink = /\[.*\](\(.+\)|\[.+\])/g;
 
 
 /**
  * bold
  * @type {RegExp}
  */
-const _isBold = /(\*\*).+\1/g;
+const _hasBold = /(\*\*).+\1/g;
 
 
 /**
  * italic
  * @type {RegExp}
  */
-const _isItalic = /\*.+\*/g;
+const _hasItalic = /\*.+\*/g;
 
 /**
  * code
  * @type {RegExp}
  * @private
  */
-const _isCode = /^`{3}$/;
+const _isCode = /^`{3}/;
 
 
 /**
@@ -57,14 +57,14 @@ const _isCode = /^`{3}$/;
  * @type {RegExp}
  * @private
  */
-const _isHr = /^([*\-]\s){3,}/;
+const _isHr = /^\s*([*\-]\s*){3,}/;
 
 /**
  * list
  * @type {RegExp}
  * @private
  */
-const _isList = /^([\-*+]|\d\.)\s/;
+const _isList = /^\s*([\-*+]|\d\.)\s/;
 
 
 /**
@@ -72,4 +72,29 @@ const _isList = /^([\-*+]|\d\.)\s/;
  * @type {RegExp}
  * @private
  */
-const _isMark = /`.+`/g;
+const _hasMark = /`.+`/g;
+
+
+
+
+export const blockTypeReg = {
+  _isTitle,
+  _isQuote,
+  _isCode,
+  _isHr,
+  _isList,
+};
+
+export const inlineTypeReg = {
+  _hasImg,
+  _hasLink,
+  _hasBold,
+  _hasItalic,
+  _hasMark
+};
+
+
+export default {
+  blockTypeReg,
+  inlineTypeReg
+}
