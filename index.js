@@ -4,6 +4,7 @@
 
 import getBlockType from './getBlockType';
 import * as format from './format';
+import './style/index.less';
 
 
 /**
@@ -18,15 +19,15 @@ export default function toHTML(value) {
       index = 0,
       result = '';
 
-  console.log(chunks)
   while (index < valueLength) {
     chunk = chunks[index];
-    console.log(chunk)
     switch (getBlockType(chunk)){
       case '_isTitle':
         result += format.title(chunk);
         break;
       case '_isQuote':
+        result += format.quote(chunk);
+        break;
       case '_isCode':
       case '_isHr':
       case '_isList':

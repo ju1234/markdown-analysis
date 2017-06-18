@@ -13,14 +13,14 @@ const _isTitle = /^#{1,6}\s+/;
  * 引用
  * @type {RegExp}
  */
-const _isQuote = /^>\s+/g;
+const _isQuote = /^>\s+/;
 
 /**
  * image
  * @type {RegExp}
  * @private
  */
-const _hasImg = /!\[.*\](\(.+\)|\[.+\])/g;
+const _hasImg = /!\[.*\](\(.+\)|\[.+\])/;
 
 
 /**
@@ -28,21 +28,21 @@ const _hasImg = /!\[.*\](\(.+\)|\[.+\])/g;
  * @type {RegExp}
  * @private
  */
-const _hasLink = /\[.*\](\(.+\)|\[.+\])/g;
+const _hasLink = /\[.*\](\(.+\)|\[.+\])/;
 
 
 /**
  * bold
  * @type {RegExp}
  */
-const _hasBold = /(\*\*).+\1/g;
+const _hasBold = /(\*\*).+\1/;
 
 
 /**
  * italic
  * @type {RegExp}
  */
-const _hasItalic = /\*.+\*/g;
+const _hasItalic = /\*.+\*/;
 
 /**
  * code
@@ -72,7 +72,7 @@ const _isList = /^\s*([\-*+]|\d\.)\s/;
  * @type {RegExp}
  * @private
  */
-const _hasMark = /`.+`/g;
+const _hasMark = /`.+`/;
 
 
 

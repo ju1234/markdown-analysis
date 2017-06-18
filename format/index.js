@@ -5,3 +5,6 @@
 
 // 标题转换
 export title from './title';
+
+// 引用
+export quote from './quote';
