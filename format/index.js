@@ -10,6 +10,9 @@ export title from './title';
 // 引用
 export quote from './quote';
 
+// 代码框
+export code from './code';
+
 // ==========================INLINE===========================
 
 // 图片

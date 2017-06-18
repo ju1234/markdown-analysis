@@ -23,24 +23,37 @@ export default function toHTML(value) {
     chunk = chunks[index];
     switch (getBlockType(chunk)){
       case 'empty':
+        index++;
         break;
       case '_isTitle':
         result += format.title(chunk);
+        index++;
         break;
       case '_isQuote':
         result += format.quote(chunk);
+        index++;
         break;
       case '_isCode':
+        let codeChunks = [chunk];
+        while (!/^```\s*$/.test(chunks[index+1]) && index < valueLength - 1){
+          codeChunks.push(chunks[++index])
+        }
+        codeChunks.push(chunks[++index]);
+        result += format.code(codeChunks);
+        index++;
+        break;
       case '_isHr':
         result += '<hr/>';
+        index++;
         break;
       case '_isList':
       case 'noBlockType':
       default:
-        result += format.image(chunk);
+        // result += format.image(chunk);
+        index++;
         break;
     }
-    index++;
+
   }
 
   console.log(result);
