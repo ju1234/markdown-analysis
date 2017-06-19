@@ -59,13 +59,10 @@ export default function toHTML(value) {
         }
         result += format.list(items);
         index++;
-        // console.log(items,index);
-
         break;
       // 无特殊字符
       case 'noBlockType':
-      default:
-        // result += format.image(chunk);
+        console.log('noBlockType')
         index++;
         break;
     }

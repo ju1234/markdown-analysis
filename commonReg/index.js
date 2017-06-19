@@ -35,14 +35,14 @@ const _hasLink = /\[.*\](\(.+\)|\[.+\])/;
  * bold
  * @type {RegExp}
  */
-const _hasBold = /(\*\*).+\1/;
+const _hasBold = /(\*\*)([^*]+)\1/;
 
 
 /**
  * italic
  * @type {RegExp}
  */
-const _hasItalic = /\*.+\*/;
+const _hasItalic = /\*([^*]+)\*/g;
 
 /**
  * code
@@ -72,7 +72,7 @@ const _isListStart = /^([\-*+]|\d\.)\s/;
  * @type {RegExp}
  * @private
  */
-const _hasMark = /`.+`/;
+const _hasMark = /`([^`]+)`/g;
 
 
 
