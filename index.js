@@ -94,7 +94,7 @@ export default function toHTML(value) {
 
   }
 
-  return result;
+  return `<div class="ju-markdown">${result}</div>`;
 }
 
 

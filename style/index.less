@@ -3,49 +3,41 @@
 }
 
 .ju-markdown {
+  border: 1px solid #ccc;
+  padding: 2em;
 
-  /*h1*/
-  &-h1 {
-    padding-bottom: 0.3em;
-    font-size: 2em;
-    border-bottom: 1px solid #eaecef;
-    margin: 0.67em 0;
-
-    &:first-child{
-      margin-top: 0;
+  h1, h2, h3, h4, h5, h6 {
+    padding: .8em 0;
+    &:first-child {
+      margin-top: .5em;
     }
   }
 
-  /*标记 `。。。`*/
-  &-mark {
-    background: #F9F2F4;
-    color: #CB365B;
-    padding: 0 .5em;
+  h1, h2 {
+    border-bottom: 1px solid #ccc;
   }
 
-  /*分割线 hr *** */
-  &-hr {
-    border: 1px dashed #ccc;
-  }
-
-  /*引用*/
-  &-quote{
-    border-left: 5px solid #A5C261;
-    padding-left: 2em;
-  }
-
-  /*链接*/
-  &-link{
-    color: #6897BB;
-  }
-
-  &-code{
-    background: #F7F7F9;
+  //代码框
+  &-code {
+    width: 100%;
     &::before{
       display: block;
-      background: #FBFBFC;
       content: attr(ref);
-      color: #C1C1C8;
+      background: #A3B4CF;
+      color: #efefef;
+      padding: .3em .8em;
+    }
+
+    background: #F6F8FA;
+
+    > pre{
+      overflow: auto;
+      padding: .8em;
+      color: #24292E;
+      font-size: 1.2em;
     }
   }
+
+  //引用
+
 }
