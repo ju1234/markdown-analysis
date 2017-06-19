@@ -2,6 +2,8 @@
  * Created by jufei on 2017/6/19.
  */
 
+import {inlineTypeReg} from '../commonReg';
+
 const _ul = /(?:^|\n)((?:\*|\-|\+)\s.+(?:(?:\n(?:.*\n)?)(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
 const _ol = /(?:^|\n)((?:\d\.)\s.+(?:(?:\n)(?:.*\n)?(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
 
@@ -11,11 +13,13 @@ const _ol = /(?:^|\n)((?:\d\.)\s.+(?:(?:\n)(?:.*\n)?(?:(?:\s)*(?:\*|\-|\+|\d\.).
  * @return {string|*}
  */
 export default function list(items) {
-  let string = items.join('\n');
-      // result = '';
+  let string = items.join('\n').replace(inlineTypeReg._hasBold, '<strong>$2</strong>')
+      .replace(inlineTypeReg._hasItalic,'<i>$1</i>')
+      .replace(inlineTypeReg._hasMark,'<span class="ju-markdown-mark">$1</span>');
+  // result = '';
   if (/\d/.test(string[0])) {
     string = toOl(string)
-  }else {
+  } else {
     string = toUl(string)
   }
   return string;

@@ -35,14 +35,14 @@ const _hasLink = /\[[^\]]*\](\([^)\]]+\)|\[[^)\]]+\])/g;
  * bold
  * @type {RegExp}
  */
-const _hasBold = /(\*\*)([^*]+)\1/;
+const _hasBold = /(\*\*)([^\s*]+)\1/g;
 
 
 /**
  * italic
  * @type {RegExp}
  */
-const _hasItalic = /\*([^*]+)\*/g;
+const _hasItalic = /\*([^\s*]+)\*/g;
 
 /**
  * code
@@ -57,7 +57,7 @@ const _isCode = /^`{3}/;
  * @type {RegExp}
  * @private
  */
-const _isHr = /^([*\-]\s*){3,}/;
+const _isHr = /^([*\-]\s*){3,}$/;
 
 /**
  * list
