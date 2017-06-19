@@ -9,7 +9,7 @@ import {blockTypeReg} from '../commonReg';
 /**
  * get value block type
  * @param value
- * @return {string} [_isTitle,_isQuote,_isCode,_isHr,_isList,noBlockType,empty]
+ * @return {string} [_isTitle,_isQuote,_isCode,_isHr,_isListStart,noBlockType,empty]
  */
 
 function getBlockType(value) {

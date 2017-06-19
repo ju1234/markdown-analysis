@@ -39,7 +39,7 @@ export default function toHTML(value) {
       // 代码
       case '_isCode':
         let codeChunks = [chunk];
-        while (!/^```\s*$/.test(chunks[index+1]) && index < valueLength - 1){
+        while (index < valueLength - 1 && !/^```\s*$/.test(chunks[index+1])){
           codeChunks.push(chunks[++index])
         }
         codeChunks.push(chunks[++index]);
@@ -52,7 +52,16 @@ export default function toHTML(value) {
         index++;
         break;
       // 列表
-      case '_isList':
+      case '_isListStart':
+        let items = [chunk];
+        while(index + 1 < valueLength && /^\s*([\-*+]|\d\.)\s/.test(chunks[index + 1])){
+          items.push(chunks[++index])
+        }
+        result += format.list(items);
+        index++;
+        // console.log(items,index);
+
+        break;
       // 无特殊字符
       case 'noBlockType':
       default:

@@ -64,7 +64,7 @@ const _isHr = /^([*\-]\s*){3,}/;
  * @type {RegExp}
  * @private
  */
-const _isList = /^\s*([\-*+]|\d\.)\s/;
+const _isListStart = /^([\-*+]|\d\.)\s/;
 
 
 /**
@@ -82,7 +82,7 @@ export const blockTypeReg = {
   _isQuote,
   _isCode,
   _isHr,
-  _isList,
+  _isListStart,
 };
 
 export const inlineTypeReg = {

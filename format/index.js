@@ -13,6 +13,9 @@ export quote from './quote';
 // 代码框
 export code from './code';
 
+// 列表
+export list from './list';
+
 // ==========================INLINE===========================
 
 // 图片
