@@ -31,13 +31,9 @@ function title(value) {
       .replace(_h6, '<h6>$1</h6>')
       .replace(inlineTypeReg._hasBold,'<strong>$2</strong>')
       .replace(inlineTypeReg._hasItalic,'<i>$1</i>')
-      .replace(inlineTypeReg._hasMark,'<span class="ju-markdown-mark">$1</span>')
+      .replace(inlineTypeReg._hasMark,'<span class="ju-markdown-mark">$1</span>');
 
 
-  // // 行内样式
-  // if(){
-  //
-  // }
   return value;
 }
 

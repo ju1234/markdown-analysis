@@ -20,7 +20,7 @@ const _isQuote = /^>\s+/;
  * @type {RegExp}
  * @private
  */
-const _hasImg = /!\[.*\](\(.+\)|\[.+\])/;
+const _hasImg = /!\[[^\]]*\](\([^)\]]+\)|\[[^)\]]+\])/g;
 
 
 /**
@@ -28,7 +28,7 @@ const _hasImg = /!\[.*\](\(.+\)|\[.+\])/;
  * @type {RegExp}
  * @private
  */
-const _hasLink = /\[.*\](\(.+\)|\[.+\])/;
+const _hasLink = /\[[^\]]*\](\([^)\]]+\)|\[[^)\]]+\])/g;
 
 
 /**
