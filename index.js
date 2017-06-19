@@ -8,11 +8,36 @@ import './style/index.less';
 
 
 /**
+ * script
+ * @type {RegExp}
+ * @private
+ */
+const _script = /<(script).*\/*>(.*<\/\1\s*>)?/gi;
+
+/**
+ * empty
+ * @type {RegExp}
+ * @private
+ */
+const _empty = /^\s*$/;
+/**
  * toHTML
  * @param value
  * @return {*}
  */
 export default function toHTML(value) {
+  // 验证value是否为String类型，如果不是抛出异常
+  if (Object.prototype.toString.call(value) !== '[object String]') {
+    throw 'toHTML arguments[0] must be string'
+  }
+
+  // 验证value是否为空
+  if (_empty.test(value)) {
+    throw 'argument[0] is empty'
+  }
+
+  value = value.replace(_script,'');
+
   let chunks= value.split('\n'),
       chunk = '',
       valueLength = chunks.length,
@@ -21,6 +46,7 @@ export default function toHTML(value) {
 
   while (index < valueLength) {
     chunk = chunks[index];
+    console.log(getBlockType(chunk))
     switch (getBlockType(chunk)){
       // 空行
       case 'empty':

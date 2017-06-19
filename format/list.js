@@ -15,7 +15,13 @@ const _ol = /(?:^|\n)((?:\d\.)\s.+(?:(?:\n)(?:.*\n)?(?:(?:\s)*(?:\*|\-|\+|\d\.).
 export default function list(items) {
   let string = items.join('\n').replace(inlineTypeReg._hasBold, '<strong>$2</strong>')
       .replace(inlineTypeReg._hasItalic,'<i>$1</i>')
-      .replace(inlineTypeReg._hasMark,'<span class="ju-markdown-mark">$1</span>');
+      .replace(inlineTypeReg._hasMark,'<span class="ju-markdown-mark">$1</span>')
+      .replace(inlineTypeReg._hasImg,function ($,$1,$2) {
+        return `<img src="${$2}" title="${$1}" alt="${$1}"/>`
+      })
+      .replace(inlineTypeReg._hasLink,function ($,$1,$2) {
+        return `<a href="${$2}">${$1}</a>`
+      });
   // result = '';
   if (/\d/.test(string[0])) {
     string = toOl(string)

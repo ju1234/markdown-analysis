@@ -57,7 +57,7 @@ const _italic = /\*(.+)\*/gi;
  * @type {RegExp}
  * @private
  */
-const _bold = /\*\*(.+)\*\*/gi;
+const _bold = /\*\*(.+)\*\*/g;
 
 /**
  * 匹配标记 `...`
