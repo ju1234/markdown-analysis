@@ -5,7 +5,11 @@
 const _ul = /(?:^|\n)((?:\*|\-|\+)\s.+(?:(?:\n(?:.*\n)?)(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
 const _ol = /(?:^|\n)((?:\d\.)\s.+(?:(?:\n)(?:.*\n)?(?:(?:\s)*(?:\*|\-|\+|\d\.).+)*)*)(?=\n|$)/gi;
 
-
+/**
+ * list
+ * @param items
+ * @return {string|*}
+ */
 export default function list(items) {
   let string = items.join('\n');
       // result = '';
