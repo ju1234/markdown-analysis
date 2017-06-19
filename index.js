@@ -46,7 +46,6 @@ export default function toHTML(value) {
 
   while (index < valueLength) {
     chunk = chunks[index];
-    console.log(getBlockType(chunk))
     switch (getBlockType(chunk)){
       // 空行
       case 'empty':
@@ -95,7 +94,6 @@ export default function toHTML(value) {
 
   }
 
-  console.log(result);
   return result;
 }
 

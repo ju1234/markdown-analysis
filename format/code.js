@@ -12,5 +12,6 @@ export default function code(codeChuns) {
   }
 
   let codeName = codeChuns.shift().replace(/`{3}\s*(.*)/,'$1');
-  return `<pre class="ju-markdown-code" ref="${codeName}">${codeChuns.join('\n')}</pre>`
+  console.log(codeName)
+  return `<pre ref="${codeName}" class="ju-markdown-code">${codeChuns.join('\n')}</pre>`
 }
