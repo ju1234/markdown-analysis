@@ -16,6 +16,7 @@ export code from './code';
 // 列表
 export list from './list';
 
+export normal from './normal';
 // ==========================INLINE===========================
 
 // 图片

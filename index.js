@@ -62,7 +62,7 @@ export default function toHTML(value) {
         break;
       // 无特殊字符
       case 'noBlockType':
-        console.log('noBlockType')
+        result += format.normal(chunk);
         index++;
         break;
     }
