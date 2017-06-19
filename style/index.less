@@ -8,6 +8,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     padding: .8em 0;
+    margin-top: 0;
     &:first-child {
       margin-top: .5em;
     }
@@ -17,10 +18,37 @@
     border-bottom: 1px solid #ccc;
   }
 
+  p {
+    margin-bottom: .3em;
+  }
+
+  hr {
+    border-style: ridge;
+  }
+
+  ul, ol {
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    li + li{
+      margin-top: .25em;
+    }
+
+    > li{
+      > ul, > ol {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a{
+    color: #1155CC;
+  }
+
   //代码框
   &-code {
     width: 100%;
-    &::before{
+    &::before {
       display: block;
       content: attr(ref);
       background: #A3B4CF;
@@ -30,7 +58,7 @@
 
     background: #F6F8FA;
 
-    > pre{
+    > pre {
       overflow: auto;
       padding: .8em;
       color: #24292E;
@@ -39,5 +67,8 @@
   }
 
   //引用
-
+  &-quote {
+    border-left: .3em solid #ccc;
+    padding: .3em 1.2em;
+  }
 }
