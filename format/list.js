@@ -31,7 +31,11 @@ export default function list(items) {
   return string;
 }
 
-
+/**
+ * convert to ul
+ * @param value
+ * @return {XML|string|*}
+ */
 function toUl(value) {
   // 找出满足无序列表条件的字符串
   value = value.replace(_ul, function ($1) {
@@ -56,7 +60,11 @@ function toUl(value) {
   return value;
 }
 
-
+/**
+ * convert to ol
+ * @param value
+ * @return {XML|string|*}
+ */
 function toOl(value) {
   value = value.replace(_ol, function ($1) {
     let result = '';
